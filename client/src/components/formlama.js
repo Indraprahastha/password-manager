@@ -53,11 +53,17 @@ class Formulirbaru extends Component {
   changePassword (event) {
     this.setState({inppassword: event.target.value});
 
-    var jumlah = new RegExp("^(?=.{5,})")
-    var hurufkapital = new RegExp("^(?=.*[A-Z])")
-    var hurufkecil = new RegExp("^(?=.*[a-z])")
-    var karakterunik = new RegExp("^(?=.*[!@#\$%\^&\*])")
-    var angka = new RegExp("^(?=.*[0-9])")
+    // var jumlah = new RegExp("^(?=.{5,})")
+    // var hurufkapital = new RegExp("^(?=.*[A-Z])")
+    // var hurufkecil = new RegExp("^(?=.*[a-z])")
+    // var karakterunik = new RegExp("^(?=.*[!@#\$%\^&\*])")
+    // var angka = new RegExp("^(?=.*[0-9])")
+
+    var jumlah = new RegExp("{5,}")
+    var hurufkapital = new RegExp("/[A-Z]{2,}/g")
+    var hurufkecil = new RegExp("[a-z]{2,}")
+    var karakterunik = new RegExp("/[!@#\$%\^&\*]{2,}/g")
+    var angka = new RegExp("/[0-9]{2,}/g")
 
     var jumlahTrue = jumlah.test(this.state.inppassword)
     var hurufTrue = hurufkapital.test(this.state.inppassword)
