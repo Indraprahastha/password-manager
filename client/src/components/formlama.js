@@ -122,8 +122,24 @@ class Formulirbaru extends Component {
 
 
   pushtodatabase (event) {
+    var check = new RegExp("^(?=.{5,})(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#\$%\^&\*])(?=.*[0-9])")
+    var trueOrFalse = check.test(this.state.inppassword)
+
+    // if (trueOrFalse) {
+    //
+    //   console.log({
+    //     id: this.state.jumlahmin,
+    //     url: this.state.kapital,
+    //     username: this.state.karakterunik,
+    //     password: this.state.angka,
+    //     createat: this.state.kecil
+    //   })
+    // } else {
+    //
+    // }
     // console.log('amankan kawan')
     // this.props.history.push("/someNewPage");
+    let checker = this.state.inppassword === this.props.usersatuan.password
     if (this.state.jumlahmin && this.state.kapital && this.state.karakterunik && this.state.angka && this.state.kecil) {
       let obj = {
         id: this.state.inpid,
@@ -133,11 +149,25 @@ class Formulirbaru extends Component {
         createat: this.state.inpcreateat,
         editedat: this.tanggal(new Date())
       }
+      // console.log('Bug kah?', obj)
+      this.props.editUser(obj)
+      this.setDefault()
+      event.preventDefault();
+    } else if (checker) {
+      let obj = {
+        id: this.state.inpid,
+        url: this.state.inpurl,
+        username: this.state.inpusername,
+        password: this.state.inppassword,
+        createat: this.state.inpcreateat,
+        editedat: this.tanggal(new Date())
+      }
+      // console.log('Bug kah?', obj)
       this.props.editUser(obj)
       this.setDefault()
       event.preventDefault();
     } else {
-      this.setDefauld()
+      this.setDefault()
       event.preventDefault();
     }
   }
