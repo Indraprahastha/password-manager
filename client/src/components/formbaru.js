@@ -94,7 +94,12 @@ class Formulir extends Component {
     this.setState({
       inppassword: '',
       inpusername: '',
-      inpurl: ''
+      inpurl: '',
+      jumlahmin: false,
+      kapital: false,
+      karakterunik: false,
+      angka: false,
+      kecil: false
     });
   }
 
